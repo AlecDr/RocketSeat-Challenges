@@ -35,10 +35,11 @@ class App extends Component {
 
     for (let i = 0; i < userData.length; i++) {
       const post = {
-        content: loremIpsum({
-          count: Math.random() * 100 + 10,
-          units: "words"
-        }),
+        content:
+          loremIpsum({
+            count: Math.random() * 100 + 10,
+            units: "words"
+          }) + ".",
         author: {
           name: `${userData[i].name.first} ${userData[i].name.last}`,
           picture: userData[i].picture.medium
