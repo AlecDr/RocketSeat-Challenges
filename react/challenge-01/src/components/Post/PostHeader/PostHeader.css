@@ -1,0 +1,28 @@
+.PostHeader {
+  display: flex;
+  align-items: center;
+}
+
+img {
+  display: flex;
+  border-radius: 50%;
+  margin-right: 16px;
+  width: 60px;
+}
+
+.AuthorData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.AuthorData p {
+  margin: 0;
+  font-weight: bold;
+  color: #333333;
+}
+
+.AuthorData span {
+  font-size: 12px;
+  color: #838383;
+}

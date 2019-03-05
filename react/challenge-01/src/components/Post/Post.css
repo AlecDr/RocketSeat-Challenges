@@ -1,0 +1,43 @@
+.Post {
+  width: 55%;
+  margin: 0 auto;
+  border: 1px solid rgb(204, 204, 204);
+  background-color: #ffffff;
+  padding: 26px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #ccc;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.Post p {
+  line-height: 1.4;
+}
+
+.Post p::first-letter {
+  text-transform: capitalize;
+}
+
+@media (max-width: 800px) {
+  .Post {
+    width: 80%;
+  }
+}
+
+@media (min-width: 800px) {
+  .Post {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Post {
+    width: 65%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .Post {
+    width: 40%;
+  }
+}

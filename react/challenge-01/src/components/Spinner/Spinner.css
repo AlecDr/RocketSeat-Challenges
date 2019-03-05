@@ -1,0 +1,20 @@
+.Spinner {
+  width: 100%;
+  text-align: center;
+}
+
+.Spinner > img {
+  margin: 0 auto;
+  width: 100px;
+  max-height: 300px;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
