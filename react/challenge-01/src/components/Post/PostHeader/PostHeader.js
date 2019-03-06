@@ -8,7 +8,7 @@ const postHeader = props => {
         <img src={props.author.picture} />
         <div className={styles.AuthorData}>
           <p>{props.author.name}</p>
-          <span>Há 20 min</span>
+          <span>Há {props.postDate} min</span>
         </div>
       </div>
       <hr />
