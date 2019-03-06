@@ -1,0 +1,27 @@
+body {
+  background-color: rgb(82, 82, 82);
+}
+
+div {
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+}
+
+img {
+  width: 200px;
+  margin: 0 auto;
+  animation: spin 10s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
