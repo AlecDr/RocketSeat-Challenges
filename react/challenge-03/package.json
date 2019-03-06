@@ -16,6 +16,7 @@
     "autoprefixer": "^9.4.10",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.1",
+    "dotenv": "^6.2.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-babel": "^9.0.0",
     "eslint-config-prettier": "^4.1.0",
@@ -44,7 +45,10 @@
     "css-loader": "^2.1.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-map-gl": "^4.0.14",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
     "style-loader": "^0.23.1"
   }
 }
