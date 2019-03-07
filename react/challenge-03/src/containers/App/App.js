@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 //import { Link, Route, Switch } from 'react-router-dom';
+import { fetchGithubRepoStart } from "../../store/actions/index";
 import "./App.css";
 
 import Map from "../../components/Map/Map";
@@ -17,6 +19,7 @@ class App extends Component {
   };
 
   componentDidMount = () => {
+    this.props.onFetchGithubRepoStart();
     window.addEventListener("resize", this.updateMapDimensions);
   };
 
@@ -45,4 +48,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchGithubRepoStart: user =>
+      dispatch(fetchGithubRepoStart({ user: "test" }))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
