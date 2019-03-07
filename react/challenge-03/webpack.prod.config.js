@@ -1,10 +1,10 @@
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const autoprefixer = require("autoprefixer");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
-  entry: './src/index.js',
+  devtool: "cheap-module-source-map",
+  entry: ["@babel/polyfill", "./src/index.js"],
   optimization: {
     minimizer: [
       new UglifyJSPlugin({
@@ -22,8 +22,8 @@ module.exports = {
         default: false,
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor_app',
-          chunks: 'all',
+          name: "vendor_app",
+          chunks: "all",
           minChunks: 2
         }
       }
@@ -34,53 +34,52 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ["babel-loader"]
       },
       {
         test: /\.css$/,
         use: [
-          {loader: 'style-loader'},
+          { loader: "style-loader" },
           {
-            loader: 'css-loader', 
+            loader: "css-loader",
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: '[name]_[local]_[hash:base64:5]',
+              localIdentName: "[name]_[local]_[hash:base64:5]",
               sourceMap: true
             }
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              ident: 'postcss'
+              ident: "postcss"
             }
-          } 
+          }
         ]
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=8000&name=images/[name].[ext]'
+        loader: "url-loader?limit=8000&name=images/[name].[ext]"
       }
-      
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ["*", ".js", ".jsx"]
   },
   output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: __dirname + "/dist",
+    publicPath: "/",
+    filename: "bundle.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.html',
-      inject: 'body',
-      filename: './index.html'
+      template: __dirname + "/src/index.html",
+      inject: "body",
+      filename: "./index.html"
     })
   ],
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     hot: true
   }
-}
+};
