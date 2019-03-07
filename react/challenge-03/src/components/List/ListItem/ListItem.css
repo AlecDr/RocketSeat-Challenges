@@ -1,9 +1,14 @@
 .ListItem {
   display: flex;
+  padding: 1vh;
   flex-wrap: wrap;
+  border-radius: 10px;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 2px 10px #ccc;
+  margin-bottom: 1vh;
   border-bottom: 1px solid #ccc;
+  transition: all 0.5s linear;
 }
 
 .UserInfo {
@@ -71,7 +76,7 @@
   font-size: 20px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .UserInfo {
     justify-content: center;
   }
