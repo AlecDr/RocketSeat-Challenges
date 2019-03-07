@@ -1,0 +1,70 @@
+.ListItem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.UserInfo {
+  display: flex;
+  flex-grow: 5;
+  align-items: center;
+}
+
+.UserInfo img {
+  border-radius: 50px;
+  width: 45px;
+  margin-right: 0.8vh;
+}
+
+.UserInfo div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.UserInfo p {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.UserInfo span {
+  font-size: 12px;
+  color: #5c5c5c;
+}
+
+.UserControls {
+  display: flex;
+  flex-grow: 1;
+  height: 60%;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+}
+
+.UserControls .CloseIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: #d55454;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+}
+
+.UserControls .RightArrowIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 18px;
+  color: #bbb;
+  text-align: center;
+  font-size: 20px;
+}

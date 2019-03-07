@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 //import { Link, Route, Switch } from 'react-router-dom';
 import "./App.css";
+
 import Map from "../../components/Map/Map";
+import List from "../../components/List/List";
 
 class App extends Component {
   state = {
@@ -33,6 +35,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <List />
         <Map
           onViewportChange={this.onViewportChange}
           {...this.state.viewport}
