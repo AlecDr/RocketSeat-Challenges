@@ -38,6 +38,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: [
+          { loader: "style-loader" },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: "postcss"
+            }
+          }
+        ]
+      },
+      {
+        test: /\.module\.css$/,
         use: [
           { loader: "style-loader" },
           {
