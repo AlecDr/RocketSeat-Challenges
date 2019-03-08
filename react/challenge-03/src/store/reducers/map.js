@@ -3,7 +3,8 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   loading: false,
   users: [],
-  error: null
+  error: null,
+  modalIsOpened: false
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,6 +17,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, loading: false, users: users };
     case actionTypes.FETCH_GITHUB_REPO_FAILED:
       return { ...state, loading: false, error: action.payload.error };
+    case actionTypes.ON_OPEN_MODAL:
+      return { ...state, modalIsOpened: true };
+    case actionTypes.ON_CLOSE_MODAL:
+      return { ...state, modalIsOpened: false };
 
     default:
       return { ...state };

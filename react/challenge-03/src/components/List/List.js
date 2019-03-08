@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./List.css";
+import styles from "./List.module.css";
 
 import ListItem from "./ListItem/ListItem";
 

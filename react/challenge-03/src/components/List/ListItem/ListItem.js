@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ListItem.css";
+import styles from "./ListItem.module.css";
 
 const listItem = props => (
   <div className={styles.ListItem}>

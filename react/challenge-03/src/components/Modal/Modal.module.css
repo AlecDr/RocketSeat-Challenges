@@ -1,0 +1,58 @@
+.Modal {
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Modal p {
+  margin: 10px;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.Input {
+  padding: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.Button {
+  cursor: pointer;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 20px 40px;
+  text-align: center;
+  color: white;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.Button:first-of-type {
+  margin-right: 10px;
+}
+
+.Success {
+  background-color: #85c47c;
+}
+
+.Error {
+  background-color: #c47c7c;
+}

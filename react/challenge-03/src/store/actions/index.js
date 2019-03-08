@@ -1,5 +1,7 @@
 export {
   fetchGithubRepoStart,
   fetchGithubRepoSuccess,
-  fetchGithubRepoFailed
+  fetchGithubRepoFailed,
+  onOpenModal,
+  onCloseModal
 } from "./map";

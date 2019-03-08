@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 //import { Link, Route, Switch } from 'react-router-dom';
-import { fetchGithubRepoStart } from "../../store/actions/index";
-import "./App.css";
+import {
+  fetchGithubRepoStart,
+  onOpenModal,
+  onCloseModal
+} from "../../store/actions/index";
+import "./App.module.css";
 
 import Map from "../../components/Map/Map";
 import List from "../../components/List/List";
+import Modal from "../../components/Modal/Modal";
+import Backdrop from "../../components/Backdrop/Backdrop";
 
 class App extends Component {
   state = {
@@ -15,7 +23,8 @@ class App extends Component {
       latitude: 37.7577,
       longitude: -122.4376,
       zoom: 8
-    }
+    },
+    searchText: ""
   };
 
   componentDidMount = () => {
@@ -35,27 +44,66 @@ class App extends Component {
     this.setState({ viewport });
   };
 
+  onMapClickHandler = event => {
+    console.log(event);
+    // this.setState({
+    //   viewport: {
+    //     ...this.state.viewport,
+    //     latitude: event.lngLat[1],
+    //     longitude: event.lngLat[0],
+    //     zoom: 8
+    //   }
+    // });
+    this.props.onOpenModal();
+    this.setState({ searchText: "" });
+  };
+
+  onChangeSearchTextHandler = event => {
+    this.setState({ searchText: event.target.value });
+  };
+
   render() {
     return (
       <div>
+        {this.props.modalIsOpened ? (
+          <div>
+            <Backdrop />{" "}
+            <Modal
+              onChangeSearchTextHandler={this.onChangeSearchTextHandler}
+              searchText={this.state.searchText}
+              onFetchGithubRepoStart={this.props.onFetchGithubRepoStart}
+              onCloseModal={this.props.onCloseModal}
+            />{" "}
+          </div>
+        ) : null}
         <List />
         <Map
+          onMapClickHandler={this.onMapClickHandler}
           onViewportChange={this.onViewportChange}
           {...this.state.viewport}
         />
+        <ToastContainer />
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    modalIsOpened: state.modalIsOpened
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchGithubRepoStart: user =>
-      dispatch(fetchGithubRepoStart({ user: "test" }))
+    onFetchGithubRepoStart: (userName, coords) =>
+      dispatch(fetchGithubRepoStart(userName, coords)),
+    onOpenModal: () => dispatch(onOpenModal()),
+    onCloseModal: () => dispatch(onCloseModal())
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);

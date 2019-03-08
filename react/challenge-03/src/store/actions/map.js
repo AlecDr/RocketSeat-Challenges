@@ -1,10 +1,12 @@
 import * as actionTypes from "./actionTypes";
 
-export const fetchGithubRepoStart = user => {
+export const fetchGithubRepoStart = userName => {
   return {
     type: actionTypes.FETCH_GITHUB_REPO_START,
     payload: {
-      user
+      user: {
+        name: userName
+      }
     }
   };
 };
@@ -18,5 +20,17 @@ export const fetchGithubRepoSuccess = () => {
 export const fetchGithubRepoFailed = () => {
   return {
     type: actionTypes.FETCH_GITHUB_REPO_FAILED
+  };
+};
+
+export const onOpenModal = () => {
+  return {
+    type: actionTypes.ON_OPEN_MODAL
+  };
+};
+
+export const onCloseModal = () => {
+  return {
+    type: actionTypes.ON_CLOSE_MODAL
   };
 };
