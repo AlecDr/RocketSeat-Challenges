@@ -5,7 +5,8 @@ import { ToastContainer } from "react-toastify";
 import {
   fetchGithubRepoStart,
   onOpenModal,
-  onCloseModal
+  onCloseModal,
+  removeUser
 } from "../../store/actions/index";
 
 import "./App.module.css";
@@ -62,6 +63,20 @@ class App extends Component {
     );
   };
 
+  onRemoveUserHandler = user => {
+    this.props.onRemoveUser(user);
+  };
+
+  onFocusUserHandler = user => {
+    let { latitude, longitude } = this.state.viewport;
+    latitude = user.latitude;
+    longitude = user.longitude;
+
+    this.setState({
+      viewport: { ...this.state.viewport, latitude, longitude }
+    });
+  };
+
   render() {
     return (
       <div>
@@ -77,7 +92,11 @@ class App extends Component {
             />
           </div>
         ) : null}
-        <List users={this.props.users} />
+        <List
+          onRemoveUser={this.onRemoveUserHandler}
+          onFocusUserHandler={this.onFocusUserHandler}
+          users={this.props.users}
+        />
         <Map
           users={this.props.users}
           onMapClickHandler={this.onMapClickHandler}
@@ -95,7 +114,6 @@ const mapStateToProps = state => {
     users: state.users,
     loading: state.loading,
     modalIsOpened: state.modalIsOpened,
-    error: state.error,
     selectedCoords: state.selectedCoords
   };
 };
@@ -105,7 +123,8 @@ const mapDispatchToProps = dispatch => {
     onFetchGithubRepoStart: (userName, coords) =>
       dispatch(fetchGithubRepoStart(userName, coords)),
     onOpenModal: coords => dispatch(onOpenModal(coords)),
-    onCloseModal: () => dispatch(onCloseModal())
+    onCloseModal: () => dispatch(onCloseModal()),
+    onRemoveUser: user => dispatch(removeUser(user))
   };
 };
 

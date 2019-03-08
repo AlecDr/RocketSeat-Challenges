@@ -3,5 +3,6 @@ export {
   fetchGithubRepoSuccess,
   fetchGithubRepoFailed,
   onOpenModal,
-  onCloseModal
+  onCloseModal,
+  removeUser
 } from "./map";

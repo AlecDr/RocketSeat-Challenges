@@ -9,7 +9,14 @@ const list = props => {
       <ul className={styles.List}>
         {props.users ? (
           props.users.length ? (
-            props.users.map(user => <ListItem key={user.login} user={user} />)
+            props.users.map(user => (
+              <ListItem
+                onRemoveUser={props.onRemoveUser}
+                onFocusUserHandler={props.onFocusUserHandler}
+                key={user.login}
+                user={user}
+              />
+            ))
           ) : (
             <p>Start adding users!</p>
           )

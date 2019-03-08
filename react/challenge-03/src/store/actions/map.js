@@ -24,6 +24,15 @@ export const fetchGithubRepoFailed = () => {
   };
 };
 
+export const removeUser = user => {
+  return {
+    type: actionTypes.REMOVE_USER,
+    payload: {
+      user
+    }
+  };
+};
+
 export const onOpenModal = coords => {
   return {
     type: actionTypes.ON_OPEN_MODAL,

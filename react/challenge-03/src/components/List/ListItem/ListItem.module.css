@@ -45,7 +45,6 @@
 .UserControls {
   display: flex;
   flex-grow: 1;
-  height: 60%;
   justify-content: space-between;
   align-content: space-between;
   align-items: center;
@@ -63,6 +62,7 @@
   border-radius: 50%;
   font-weight: bold;
   color: white;
+  margin: 1px 1px;
 }
 
 .UserControls .RightArrowIcon {
@@ -74,6 +74,7 @@
   color: #bbb;
   text-align: center;
   font-size: 20px;
+  margin: 1px 1px;
 }
 
 @media (max-width: 800px) {

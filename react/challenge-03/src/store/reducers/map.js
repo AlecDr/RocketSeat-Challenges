@@ -30,6 +30,16 @@ export const reducer = (state = initialState, action) => {
         error: action.payload.error,
         selectedCoords: null
       };
+    case actionTypes.REMOVE_USER:
+      let filteredUsers = state.users.slice();
+      filteredUsers = filteredUsers.filter(
+        user => user.login !== action.payload.user.login
+      );
+
+      return {
+        ...state,
+        users: filteredUsers
+      };
     case actionTypes.ON_OPEN_MODAL:
       return {
         ...state,

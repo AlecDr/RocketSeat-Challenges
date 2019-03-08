@@ -11,8 +11,18 @@ const listItem = props => (
       </div>
     </div>
     <div className={styles.UserControls}>
-      <span className={styles.CloseIcon}>X</span>
-      <span className={styles.RightArrowIcon}>></span>
+      <span
+        onClick={() => props.onRemoveUser(props.user)}
+        className={styles.CloseIcon}
+      >
+        X
+      </span>
+      <span
+        onClick={() => props.onFocusUserHandler(props.user)}
+        className={styles.RightArrowIcon}
+      >
+        >
+      </span>
     </div>
   </div>
 );
