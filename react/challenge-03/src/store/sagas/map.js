@@ -25,7 +25,7 @@ export function* fetchGithubRepo(action) {
         payload: { user }
       });
 
-      toast.success("Everything was alright!");
+      toast.success("User found!");
     } else {
       yield put({
         type: actionTypes.FETCH_GITHUB_REPO_FAILED,

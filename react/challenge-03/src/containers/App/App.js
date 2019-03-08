@@ -22,9 +22,9 @@ class App extends Component {
     viewport: {
       width: "100vw",
       height: "100vh",
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
+      latitude: -28.652653,
+      longitude: -55.996042,
+      zoom: 10
     },
     searchText: ""
   };
@@ -34,7 +34,7 @@ class App extends Component {
   };
 
   updateMapDimensions = () => {
-    const viewport = this.state.viewport;
+    const viewport = Object.assign({}, this.state.viewport);
     viewport.width = "100vw";
     viewport.height = "100vh";
 
@@ -46,10 +46,8 @@ class App extends Component {
   };
 
   onMapClickHandler = event => {
-    this.props.onOpenModal(event.lngLat);
-    console.log(event);
-    //this.props.onSelectMapCoords(event.lngLat);
     this.setState({ searchText: "" });
+    this.props.onOpenModal(event.lngLat);
   };
 
   onChangeSearchTextHandler = event => {
@@ -71,6 +69,7 @@ class App extends Component {
           <div>
             <Backdrop onCloseModal={this.props.onCloseModal} />
             <Modal
+              loading={this.props.loading}
               onSubmit={this.onFetchFormSubmitHandler}
               onChangeSearchTextHandler={this.onChangeSearchTextHandler}
               searchText={this.state.searchText}
