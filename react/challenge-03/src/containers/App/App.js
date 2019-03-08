@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 //import { Link, Route, Switch } from 'react-router-dom';
 import {
   fetchGithubRepoStart,
   onOpenModal,
   onCloseModal
 } from "../../store/actions/index";
+
 import "./App.module.css";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Map from "../../components/Map/Map";
 import List from "../../components/List/List";
