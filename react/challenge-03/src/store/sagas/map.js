@@ -5,16 +5,15 @@ import { toast } from "react-toastify";
 
 export function* fetchGithubRepo(action) {
   try {
-    const response = yield axios.get("/users?q=AlecDr");
+    const response = yield axios.get(`/users?q=${action.payload.user.name}`);
     const fetchedUser = response.data.items.reduce((previous, current) => {
       return current.login === action.payload.user.name
         ? { ...current }
         : previous;
-    }, {});
+    }, null);
 
     if (fetchedUser) {
       const user = {
-        name: action.payload.user.name,
         login: fetchedUser.login,
         avatarUrl: fetchedUser.avatar_url,
         latitude: action.payload.coords.latitude,

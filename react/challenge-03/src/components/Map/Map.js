@@ -1,8 +1,10 @@
 import React from "react";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
+import icon from "../../assets/mapbox-icons/marker-15.svg";
 
 const map = props => {
   const MAP_TOKEN = process.env.MapboxAccessToken;
+
   return (
     <ReactMapGL
       onClick={coords => props.onMapClickHandler(coords)}
@@ -10,7 +12,19 @@ const map = props => {
       mapboxApiAccessToken={MAP_TOKEN}
       onViewportChange={props.onViewportChange}
       {...props}
-    />
+    >
+      {props.users.length
+        ? props.users.map(user => (
+            <Marker
+              key={user.login}
+              latitude={user.latitude}
+              longitude={user.longitude}
+            >
+              <img src={icon} />
+            </Marker>
+          ))
+        : null}
+    </ReactMapGL>
   );
 };
 

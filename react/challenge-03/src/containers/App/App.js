@@ -78,8 +78,9 @@ class App extends Component {
             />
           </div>
         ) : null}
-        <List />
+        <List users={this.props.users} />
         <Map
+          users={this.props.users}
           onMapClickHandler={this.onMapClickHandler}
           onViewportChange={this.onViewportChange}
           {...this.state.viewport}

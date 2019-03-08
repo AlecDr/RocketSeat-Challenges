@@ -7,7 +7,15 @@ const list = props => {
   return (
     <div className={styles.ListContainer}>
       <ul className={styles.List}>
-        {props.users ? null : <p>Start adding users!</p>}
+        {props.users ? (
+          props.users.length ? (
+            props.users.map(user => <ListItem key={user.login} user={user} />)
+          ) : (
+            <p>Start adding users!</p>
+          )
+        ) : (
+          <p>Start adding users!</p>
+        )}
       </ul>
     </div>
   );

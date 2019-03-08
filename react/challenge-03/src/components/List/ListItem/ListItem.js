@@ -4,9 +4,9 @@ import styles from "./ListItem.module.css";
 const listItem = props => (
   <div className={styles.ListItem}>
     <div className={styles.UserInfo}>
-      <img src="https://avatars3.githubusercontent.com/u/2254731?s=88&v=4" />
+      <img src={props.user.avatarUrl} />
       <div>
-        <p>Github User</p>
+        <p>{props.user.login}</p>
         <span>some@email.com</span>
       </div>
     </div>
