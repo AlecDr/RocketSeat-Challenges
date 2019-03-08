@@ -32,17 +32,29 @@
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 3px;
+  transition: border 0.2s;
+}
+
+.Input:focus,
+.Input:hover {
+  outline: none;
+  border-color: #777;
+  transition: border 0.2s;
 }
 
 .Button {
   cursor: pointer;
+  outline: none;
   flex-grow: 1;
   box-sizing: border-box;
   padding: 20px 40px;
   text-align: center;
   color: white;
   border-radius: 6px;
+  border: none;
+  border-bottom: 5px solid;
   margin-top: 10px;
+  transition: background-color 0.2s;
 }
 
 .Button:first-of-type {
@@ -51,8 +63,40 @@
 
 .Success {
   background-color: #85c47c;
+  border-bottom-color: #65975f;
+}
+
+.Success:hover {
+  background-color: #5c9953;
+  border-bottom-color: #273b25;
+}
+
+.Success:active {
+  background-color: #5c9953;
+  border-bottom: 2px solid #273b25;
+  transform: translateY(2px);
+  transition: transform 0.1s;
+}
+
+.Success:disabled {
+  cursor: not-allowed;
+  background-color: rgba(133, 196, 124, 0.3);
+  border-bottom-color: rgba(101, 151, 95, 0.3);
 }
 
 .Error {
   background-color: #c47c7c;
+  border-bottom-color: #8a5858;
+}
+
+.Error:hover {
+  background-color: #c26161;
+  border-bottom-color: #632626;
+}
+
+.Error:active {
+  background-color: #c26161;
+  border-bottom: 2px solid #632626;
+  transform: translateY(1px);
+  transition: transform 0.1s;
 }

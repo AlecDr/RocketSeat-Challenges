@@ -1,12 +1,13 @@
 import * as actionTypes from "./actionTypes";
 
-export const fetchGithubRepoStart = userName => {
+export const fetchGithubRepoStart = (userName, coords) => {
   return {
     type: actionTypes.FETCH_GITHUB_REPO_START,
     payload: {
       user: {
         name: userName
-      }
+      },
+      coords
     }
   };
 };
@@ -23,9 +24,12 @@ export const fetchGithubRepoFailed = () => {
   };
 };
 
-export const onOpenModal = () => {
+export const onOpenModal = coords => {
   return {
-    type: actionTypes.ON_OPEN_MODAL
+    type: actionTypes.ON_OPEN_MODAL,
+    payload: {
+      coords
+    }
   };
 };
 

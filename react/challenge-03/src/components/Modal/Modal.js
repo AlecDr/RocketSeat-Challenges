@@ -3,25 +3,31 @@ import styles from "./Modal.module.css";
 
 const modal = props => (
   <div className={styles.Modal}>
-    <p>Adicionar novo usuário</p>
-    <form>
+    <p>Add a new user</p>
+    <form onSubmit={props.onSubmit}>
       <input
         onChange={props.onChangeSearchTextHandler}
         value={props.searchText}
         className={styles.Input}
         type="text"
       />
-    </form>
-
-    <div className={styles.Buttons}>
-      <div
-        onClick={props.onCloseModal}
-        className={[styles.Button, styles.Error].join(" ")}
-      >
-        Cancelar
+      <div className={styles.Buttons}>
+        <button
+          type="button"
+          onClick={props.onCloseModal}
+          className={[styles.Button, styles.Error].join(" ")}
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          disabled={!props.searchText}
+          className={[styles.Button, styles.Success].join(" ")}
+        >
+          Add
+        </button>
       </div>
-      <div className={[styles.Button, styles.Success].join(" ")}>Adicionar</div>
-    </div>
+    </form>
   </div>
 );
 

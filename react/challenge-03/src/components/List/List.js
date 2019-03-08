@@ -7,7 +7,7 @@ const list = props => {
   return (
     <div className={styles.ListContainer}>
       <ul className={styles.List}>
-        <ListItem />
+        {props.users ? null : <p>Start adding users!</p>}
       </ul>
     </div>
   );

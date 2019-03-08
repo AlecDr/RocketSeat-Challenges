@@ -30,7 +30,6 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    this.props.onFetchGithubRepoStart();
     window.addEventListener("resize", this.updateMapDimensions);
   };
 
@@ -47,16 +46,9 @@ class App extends Component {
   };
 
   onMapClickHandler = event => {
+    this.props.onOpenModal(event.lngLat);
     console.log(event);
-    // this.setState({
-    //   viewport: {
-    //     ...this.state.viewport,
-    //     latitude: event.lngLat[1],
-    //     longitude: event.lngLat[0],
-    //     zoom: 8
-    //   }
-    // });
-    this.props.onOpenModal();
+    //this.props.onSelectMapCoords(event.lngLat);
     this.setState({ searchText: "" });
   };
 
@@ -64,18 +56,26 @@ class App extends Component {
     this.setState({ searchText: event.target.value });
   };
 
+  onFetchFormSubmitHandler = event => {
+    event.preventDefault();
+    this.props.onFetchGithubRepoStart(
+      this.state.searchText,
+      this.props.selectedCoords
+    );
+  };
+
   render() {
     return (
       <div>
         {this.props.modalIsOpened ? (
           <div>
-            <Backdrop />{" "}
+            <Backdrop onCloseModal={this.props.onCloseModal} />
             <Modal
+              onSubmit={this.onFetchFormSubmitHandler}
               onChangeSearchTextHandler={this.onChangeSearchTextHandler}
               searchText={this.state.searchText}
-              onFetchGithubRepoStart={this.props.onFetchGithubRepoStart}
               onCloseModal={this.props.onCloseModal}
-            />{" "}
+            />
           </div>
         ) : null}
         <List />
@@ -92,7 +92,11 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    modalIsOpened: state.modalIsOpened
+    users: state.users,
+    loading: state.loading,
+    modalIsOpened: state.modalIsOpened,
+    error: state.error,
+    selectedCoords: state.selectedCoords
   };
 };
 
@@ -100,7 +104,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onFetchGithubRepoStart: (userName, coords) =>
       dispatch(fetchGithubRepoStart(userName, coords)),
-    onOpenModal: () => dispatch(onOpenModal()),
+    onOpenModal: coords => dispatch(onOpenModal(coords)),
     onCloseModal: () => dispatch(onCloseModal())
   };
 };

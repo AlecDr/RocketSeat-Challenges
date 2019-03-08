@@ -20,6 +20,12 @@
   list-style: none;
 }
 
+.List p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 @media (min-width: 1400px) {
   .ListContainer {
     width: 20vw;
