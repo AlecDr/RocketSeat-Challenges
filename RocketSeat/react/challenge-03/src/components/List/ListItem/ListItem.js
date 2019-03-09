@@ -7,7 +7,6 @@ const listItem = props => (
       <img src={props.user.avatarUrl} />
       <div>
         <p>{props.user.login}</p>
-        <span>some@email.com</span>
       </div>
     </div>
     <div className={styles.UserControls}>
